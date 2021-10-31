@@ -1,3 +1,13 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
     text-align: center;
     font-family: Roboto, sans-serif;
@@ -28,20 +38,45 @@ boxes {
     grid-gap: 1rem;
 }
 
-box {
+.box {
     border: 1px solid black;
     border-radius: 1rem;
     background-color: aliceblue;
     max-width: 20em;
     text-align: left;
+
+    cursor:pointer;
+    display:block;
+    }
+
+.box:hover {
+    background-color: #004b90;
+    text-decoration: none;
+    color: #FFFFFF;
 }
 
-box img {
+.box img {
     border: 1px solid black;
     border-radius: 1rem;
     margin: 0.5rem;
     float: left;
+    width: 6rem;
+    background-color: white;
+}
 
+img.padded {
+    padding: 0.3rem;
+}
+
+.box h2 {
+    margin-top: 0.5rem;
+}
+a.box:visited h2 {
+    text-decoration: overline;
+}
+
+a.box:link h2 {
+    text-decoration: none;
 }
 
 footer {
