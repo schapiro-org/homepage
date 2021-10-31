@@ -42,26 +42,44 @@ boxes {
     border: 1px solid black;
     border-radius: 1rem;
     background-color: aliceblue;
-    max-width: 20em;
+    max-width: 21em;
     text-align: left;
-
+    box-shadow: 0 5px 5px grey;
     cursor:pointer;
     display:block;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
     }
+
+.box:link, .box:visited {
+    text-decoration: none;
+    color: inherit;
+}
 
 .box:hover {
     background-color: #004b90;
-    text-decoration: none;
     color: #FFFFFF;
+}
+
+.box:active {
+    /* simulate button push */
+    box-shadow: none;
+    position: relative;
+    top: 5px;
 }
 
 .box img {
     border: 1px solid black;
     border-radius: 1rem;
-    margin: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     float: left;
     width: 6rem;
     background-color: white;
+}
+
+.box div {
+    padding-left: 6.5rem;
 }
 
 img.padded {
@@ -70,13 +88,6 @@ img.padded {
 
 .box h2 {
     margin-top: 0.5rem;
-}
-a.box:visited h2 {
-    text-decoration: overline;
-}
-
-a.box:link h2 {
-    text-decoration: none;
 }
 
 footer {
