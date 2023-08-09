@@ -5,5 +5,5 @@
 Local development:
 
 ```bash
-npx --yes live-server public
+npx live-server public
 ```
