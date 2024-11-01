@@ -5,5 +5,5 @@
 Local development:
 
 ```bash
-npx live-server public
+./run.sh
 ```
