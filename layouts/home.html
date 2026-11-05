@@ -6,8 +6,11 @@
   {{ range .links }}
   {{- $link := . }}
   <a class="card" href="{{ .url }}" target="_blank" rel="noopener">
-    {{- /* 192 px = 2x the 6rem display width, WebP */}}
-    {{- with (resources.Get (printf "images/%s" .image)).Resize "192x webp q80" }}
+    {{- /* WebP at 2x the 6rem display width. Photos: same 3:4 crop for every card, centered on the
+         face (Smart). Logos (padded): only ever scaled down, never cropped. */}}
+    {{- $src := resources.Get (printf "images/%s" .image) }}
+    {{- $img := cond (.padded | default false) ($src.Fit "192x192 webp q80") ($src.Fill "192x256 webp q80 Smart") }}
+    {{- with $img }}
     <img {{ if $link.padded }}class="padded" {{ end }}src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" loading="lazy" decoding="async" />
     {{- end }}
     <div>

@@ -12,6 +12,9 @@
   --rule: #e9d8b4;
   --line: #3b2f2a; /* card and photo outlines */
   --radius: 1rem;
+  /* Platform fonts only, no download. Serif: a Palatino-like face on every platform. */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "Noto Serif", Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -20,7 +23,7 @@ body {
   margin-inline: auto;
   max-inline-size: 60rem;
   padding: 2rem 1rem 3rem;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
   color: var(--text);
   background: var(--background);
@@ -53,8 +56,8 @@ main {
 h2 {
   color: var(--primary);
   text-align: center;
-  font-size: 1.9rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-serif);
+  font-size: 2rem;
   text-wrap: balance;
   margin-block: 2.5rem 1rem;
 
@@ -107,7 +110,7 @@ h2 {
     &.padded { padding: 0.4rem; }
   }
 
-  & h3 { margin: 0; color: var(--primary); font-size: 1.25rem; }
+  & h3 { margin: 0; color: var(--primary); font-family: var(--font-serif); font-size: 1.35rem; }
   & p { margin: 0.25rem 0 0; color: var(--text-light); }
 }
 
