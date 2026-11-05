@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ .Content }}
+{{ range hugo.Data.links }}
+<h2>{{ .section }}</h2>
+<section class="cards">
+  {{ range .links }}
+  <a class="card" href="{{ .url }}">
+    <img {{ if .padded }}class="padded" {{ end }}src="/{{ .image }}" alt="" loading="lazy" />
+    <div>
+      <h3>{{ .name }}</h3>
+      <p>{{ .description }}</p>
+    </div>
+  </a>
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}

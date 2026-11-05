@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ .Params.lang | default "en" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <header>
+      <a href="/"><img src="/Schapiro-Center-Logo.png" alt="Schapiro Center" width="592" height="231" /></a>
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+      <a href="/impressum/">Impressum &amp; Datenschutz</a>
+      &middot;
+      <a href="{{ site.Params.contactURL }}">Contact &amp; Feedback</a>
+    </footer>
+  </body>
+</html>

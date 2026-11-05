@@ -1,0 +1,19 @@
+baseURL = "https://www.schapiro.org/"
+title = "Schapiro Center"
+locale = "en-US"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "section", "rss"]
+
+[params]
+  siteName = "Schapiro Center"
+  description = "Schapiro Center: personal homepages and blogs of the Schapiro family."
+  ogImage = "/og-image.jpg"
+  ogImageAlt = "Schapiro Center logo"
+  contactURL = "https://forms.gle/Ytoz65webQRWBigD6"
+
+
+# Hugo >= 0.16x blocks .html content files by default. content/impressum/index.html
+# is the HTML output of the privacy-notice generator, kept as HTML so updates are a
+# plain copy & paste (org stays blocked).
+[security]
+  allowContent = ['! ^text/org$']
