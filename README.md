@@ -43,8 +43,8 @@ can't live in this repo:
 
 - **Build command:** `./build.sh`
 - **Deploy command:** `npx wrangler deploy`
-- **Non-production branch deploy command:** `npx wrangler versions upload`
+- **Preview command:** `npx wrangler versions upload`
   (uploads a preview version and posts its URL on the PR; it never touches production)
-- **Production branch:** `main`, **builds for non-production branches:** on
+- **Production branch:** `main`, **Enable Preview builds:** on
 - **Build variable:** `HUGO_VERSION` = `0.169.0`. Cloudflare's build image installs this Hugo
   version; bump it here when you upgrade Hugo locally.
