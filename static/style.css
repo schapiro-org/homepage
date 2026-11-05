@@ -111,10 +111,10 @@ h2 {
     color: var(--text-light);
 }
 
-/* 404 page */
-.groucho {
+/* 404 page illustration (content/404.md) */
+main img[src$="groucho-marx-309396.svg"] {
     display: block;
-    max-width: 20rem;
+    width: 20rem;
     margin: 0 auto;
 }
 

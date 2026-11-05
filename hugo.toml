@@ -1,8 +1,7 @@
 baseURL = "https://www.schapiro.org/"
 title = "Schapiro Center"
 locale = "en-US"
-enableRobotsTXT = true
-disableKinds = ["taxonomy", "term", "section", "rss"]
+disableKinds = ["taxonomy", "term", "section", "rss", "404"]
 
 [params]
   siteName = "Schapiro Center"
