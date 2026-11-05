@@ -13,7 +13,7 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Impressum & Datenschutz:** `content/impressum/index.html`: the privacy-notice generator's HTML
   output, kept as HTML. To update, replace everything below the front matter with the new output.
   Its figures sit next to it.
-- **Upload page** for event photos: `content/upload.md`, served at `/upload/` (old `/upload.html` links redirect), noindex
+- **Upload page** for event photos: `content/upload.md`, served at `/upload/`, noindex
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/))
 - **Page `<head>`** (title, description, link previews, icons, structured data):
   `layouts/partials/head.html`
