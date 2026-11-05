@@ -46,6 +46,8 @@ install_hugo() {
   install -m 755 "$work_dir/hugo" "$install_dir/hugo"
 }
 
+# Never fall back to a Hugo left over from an earlier (cached) build.
+rm -f "$install_dir/hugo"
 for version in "${candidates[@]}"; do
   if install_hugo "$version"; then
     break

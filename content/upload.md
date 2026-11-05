@@ -1,6 +1,5 @@
 ---
 title: Photos & Videos teilen
-url: /upload.html
 lang: de
 sitemap:
   disable: true
