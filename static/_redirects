@@ -1,9 +1,9 @@
-/schlomo                https://schlomo.schapiro.org/
-/schlomo/publications   https://schlomo.schapiro.org/p/publications.html
-/schlomo/videos         https://schlomo.schapiro.org/p/publications.html
-/schlomo/projects       https://schlomo.schapiro.org/p/software.html
-/schlomo/google-g-suite https://schlomo.schapiro.org/p/software.html
-/schlomo/downloads      https://schlomo.schapiro.org/p/software.html
+/schlomo                            https://schlomo.schapiro.org/ 301
+/schlomo/publications               https://schlomo.schapiro.org/p/publications.html 301
+/schlomo/videos                     https://schlomo.schapiro.org/p/publications.html 301
+/schlomo/projects                   https://schlomo.schapiro.org/p/software.html 301
+/schlomo/google-g-suite             https://schlomo.schapiro.org/p/software.html 301
+/schlomo/downloads                  https://schlomo.schapiro.org/p/software.html 301
 
-/system/app/pages/sitemap/hierarchy /
-/system/app/pages/recentChanges     /
+/system/app/pages/sitemap/hierarchy / 301
+/system/app/pages/recentChanges     / 301
