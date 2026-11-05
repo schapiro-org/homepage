@@ -1,0 +1,128 @@
+/* Schapiro Center: plain modern CSS (native nesting), no preprocessor, system fonts only.
+   Hugo minifies it and inlines it into every page (see layouts/_partials/head.html). */
+:root {
+  /* "Warm parchment": cream like the logo's scroll, navy like its lettering, amber accents */
+  --primary: #073763; /* logo blue */
+  --accent: #d97706; /* amber */
+  --link: #b45309;
+  --text: #3b2f2a;
+  --text-light: #7c6a5d;
+  --background: #fbf6ec;
+  --surface: #fffdf8;
+  --rule: #e9d8b4;
+  --line: #3b2f2a; /* card and photo outlines */
+  --radius: 1rem;
+  /* Platform fonts only, no download. Serif: a Palatino-like face on every platform. */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "Noto Serif", Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin-inline: auto;
+  max-inline-size: 60rem;
+  padding: 2rem 1rem 3rem;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+}
+
+a {
+  color: var(--link);
+  &:hover { color: var(--primary); }
+}
+
+header img {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 30rem;
+  block-size: auto;
+  margin: 0 auto 1.5rem;
+}
+
+main {
+  max-inline-size: 50rem;
+  margin-inline: auto;
+
+  /* wide figures (Impressum) must not overflow on phones */
+  & img { max-inline-size: 100%; block-size: auto; }
+
+  /* 404 page illustration (content/404.md) */
+  & img[src*="/groucho-marx-309396."] { display: block; inline-size: 20rem; margin-inline: auto; }
+}
+
+h2 {
+  color: var(--primary);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  text-wrap: balance;
+  margin-block: 2.5rem 1rem;
+
+  &::after {
+    content: "";
+    display: block;
+    inline-size: 4rem;
+    block-size: 4px;
+    margin: 0.4rem auto 0;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+}
+
+/* Link cards (home page sections from data/links.yaml) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 5px 0 var(--rule); /* solid "lip" under each card */
+  color: inherit;
+  text-decoration: none;
+  transition: translate 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    color: inherit;
+    translate: 0 -4px;
+    box-shadow: 0 9px 0 var(--accent);
+    border-color: var(--link);
+  }
+
+  & img {
+    flex-shrink: 0;
+    inline-size: 6rem;
+    block-size: auto;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) * 0.75);
+    background: var(--surface);
+
+    &.padded { padding: 0.4rem; }
+  }
+
+  & h3 { margin: 0; color: var(--primary); font-family: var(--font-serif); font-size: 1.35rem; }
+  & p { margin: 0.25rem 0 0; color: var(--text-light); }
+}
+
+footer {
+  max-inline-size: 30rem;
+  margin: 3rem auto 0;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--rule);
+  text-align: center;
+  color: var(--text-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; &:hover { translate: none; } }
+}

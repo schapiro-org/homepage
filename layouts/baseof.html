@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Params.lang | default "en" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <header>
+      {{- /* The logo is the largest element on the page: WebP, loaded first */}}
+      {{- with (resources.Get "images/Schapiro-Center-Logo.png").Resize "592x webp q85" }}
+      <a href="/"><img src="{{ .RelPermalink }}" alt="Schapiro Center" width="{{ .Width }}" height="{{ .Height }}" fetchpriority="high" /></a>
+      {{- end }}
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+      <a href="/impressum/">Impressum &amp; Datenschutz</a>
+      &middot;
+      <a href="{{ site.Params.contactURL }}" target="_blank" rel="noopener">Contact &amp; Feedback</a>
+    </footer>
+  </body>
+</html>

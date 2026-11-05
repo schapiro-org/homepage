@@ -1,0 +1,39 @@
+# The link cards on www.schapiro.org, one list per section, rendered in this order.
+# Each entry: name, url, image (file in assets/images/, about 233 px wide), description.
+# Personal and memorial sites are also listed in the WebSite structured data (hasPart).
+
+- section: Personal Homepages
+  structured: true
+  links:
+    - name: Nadia Schapiro
+      url: https://nadia.schapiro.org/
+      image: nadia.jpeg
+      description: Blog & Homepage
+    - name: Schlomo Schapiro
+      url: https://schlomo.schapiro.org/
+      image: schlomo.jpeg
+      description: Blog & Homepage
+    - name: David Schapiro
+      url: https://david.schapiro.org/
+      image: david.jpeg
+      description: Blog & Homepage
+    - name: Arje Schapiro
+      url: https://arje.schapiro.org/
+      image: arje.jpeg
+      description: Blog & Homepage
+
+- section: Memorial Homepages
+  structured: true
+  links:
+    - name: Boris Schapiro
+      url: https://boris.schapiro.org/
+      image: boris.jpeg
+      description: Poet, physicist, philosopher and theologian
+
+- section: See Also
+  links:
+    - name: Kosher Berlin
+      url: https://kosherberlin.de/
+      image: kosherberlin.png
+      padded: true
+      description: Blog about kosher life in Berlin.
