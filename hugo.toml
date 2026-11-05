@@ -6,8 +6,7 @@ disableKinds = ["taxonomy", "term", "section", "rss", "404"]
 [params]
   siteName = "Schapiro Center"
   description = "Schapiro Center: personal homepages and blogs of the Schapiro family."
-  ogImage = "images/og-image.jpg"  # in assets/, content-hashed on build
-  ogImageAlt = "Schapiro Center logo"
+  ogImageAlt = "Schapiro Center: logo and portraits of the family members with a homepage"
   contactURL = "https://forms.gle/Ytoz65webQRWBigD6"
 
 

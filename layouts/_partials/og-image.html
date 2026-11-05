@@ -1,0 +1,65 @@
+{{- /*
+  Link-preview image (Open Graph / Twitter), 1200x630, generated at build time:
+  the logo, then one framed portrait per site in the "structured" sections of
+  data/links.yaml (personal, memorial) with its first name, then the hostname.
+  Add or change a homepage in links.yaml and this image follows:
+  up to 6 portraits in one row at full size (with a gap before each new section),
+  7 or more in two balanced rows with a smaller logo and smaller portraits.
+
+  Returns the image resource; call with partialCached "og-image.html" .
+*/ -}}
+{{- $W := 1200 }}{{- $H := 630 }}{{- $margin := 60 }}
+{{- $bg := "#fbf6ec" }}{{- $navy := "#073763" }}{{- $amber := "#b45309" }}{{- $line := "#3b2f2a" }}
+{{- $serif := resources.Get "fonts/Caladea-Bold.ttf" }}
+{{- $mask := resources.Get "images/og/frame-mask.png" }}
+
+{{- /* All portraits in order; "newSection" marks the first one of each section */}}
+{{- $people := slice }}
+{{- range hugo.Data.links }}{{ if .structured }}
+  {{- range $i, $l := .links }}{{ $people = $people | append (dict "link" $l "newSection" (eq $i 0)) }}{{ end }}
+{{- end }}{{ end }}
+{{- $n := len $people }}
+{{- $rows := cond (gt $n 6) 2 1 }}
+{{- $perRow := div (add $n (sub $rows 1)) $rows }}
+
+{{- /* Sizes: full size for one row, scaled to fit for two rows */}}
+{{- $gap := 22 }}{{- $sectionGap := cond (eq $rows 1) 34 0 }}
+{{- $logoW := cond (eq $rows 1) 444 300 }}
+{{- $maxFw := cond (eq $rows 1) 154 118 }}
+{{- $fitFw := div (sub (sub $W (mul 2 $margin)) (mul (sub $perRow 1) $gap) (mul $sectionGap (sub (len (where $people "newSection" true)) 1))) $perRow }}
+{{- $fw := cond (lt $fitFw $maxFw) $fitFw $maxFw }}
+{{- $pw := sub $fw 4 }}{{- $ph := div (mul $pw 4) 3 }}{{- $fh := add $ph 4 }}
+{{- $nameSize := div (mul 28 $fw) 154 }}{{- $nameH := add $nameSize 14 }}
+
+{{- /* Canvas: the logo (scaled down, never up), padded out to 1200x630 in the page background */}}
+{{- $logo := (resources.Get "images/Schapiro-Center-Logo.png").Resize (printf "%dx" $logoW) }}
+{{- $top := cond (eq $rows 1) 46 28 }}
+{{- $padX := div (sub $W $logo.Width) 2 }}
+{{- $canvas := $logo | images.Filter (images.Padding $top (sub $W $logo.Width $padX) (sub $H $top $logo.Height) $padX $bg) }}
+
+{{- /* Portraits row by row, each row centered */}}
+{{- $filters := slice }}
+{{- $y := add $top $logo.Height (cond (eq $rows 1) 40 22) }}
+{{- range $r := seq 0 (sub $rows 1) }}
+  {{- $row := after (mul $r $perRow) $people | first $perRow }}
+  {{- $rowW := sub (mul (len $row) (add $fw $gap)) $gap }}
+  {{- range $i, $p := $row }}{{ if and (gt $i 0) $p.newSection }}{{ $rowW = add $rowW $sectionGap }}{{ end }}{{ end }}
+  {{- $x := div (sub $W $rowW) 2 }}
+  {{- range $i, $p := $row }}
+    {{- if and (gt $i 0) $p.newSection }}{{ $x = add $x $sectionGap }}{{ end }}
+    {{- $photo := (resources.Get (printf "images/%s" $p.link.image)).Fill (printf "%dx%d Center" $pw $ph) }}
+    {{- $framed := $photo | images.Filter (images.Padding 2 2 2 2 $line) (images.Mask $mask) }}
+    {{- $first := index (split $p.link.name " ") 0 }}
+    {{- $filters = $filters | append (images.Overlay $framed $x $y) }}
+    {{- $filters = $filters | append (images.Text $first (dict "font" $serif "size" $nameSize "color" $navy "x" (add $x (div $fw 2)) "y" (add $y $fh 8) "alignx" "center")) }}
+    {{- $x = add $x $fw $gap }}
+  {{- end }}
+  {{- $y = add $y $fh $nameH 12 }}
+{{- end }}
+
+{{- /* Hostname from baseURL */}}
+{{- $host := (urls.Parse site.BaseURL).Host }}
+{{- $filters = $filters | append (images.Text $host (dict "font" $serif "size" 32 "color" $amber "x" (div $W 2) "y" (sub $H 70) "alignx" "center")) }}
+
+{{- $img := ($canvas | images.Filter $filters).Process "jpg q90" }}
+{{- return (resources.Copy "images/og-image.jpg" $img | fingerprint) }}

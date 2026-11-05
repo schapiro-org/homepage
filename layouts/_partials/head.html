@@ -1,6 +1,6 @@
 {{- $title := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
 {{- $description := .Params.description | default site.Params.description }}
-{{- $og := resources.Get site.Params.ogImage | fingerprint }}
+{{- $og := partialCached "og-image.html" . }}
 {{- $image := $og.Permalink }}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />

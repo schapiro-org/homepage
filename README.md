@@ -18,6 +18,9 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/)); **robots.txt:** `static/robots.txt`
 - **Page `<head>`** (title, description, link previews, icons, structured data):
   `layouts/_partials/head.html`
+- **Link-preview image** (1200x630): generated on every build by `layouts/_partials/og-image.html`
+  from the logo and the portraits in the personal and memorial sections of `data/links.yaml`
+  (one row up to 6, two rows beyond). Font: `assets/fonts/`.
 - **Styles:** `assets/css/style.css` (plain CSS with native nesting, system fonts; inlined into each page)
 - **Images:** `assets/images/`. Hugo serves them content-hashed; card photos and the logo are
   resized and converted to WebP. All are cached for a year (`static/_headers`). `static/` holds only files that
