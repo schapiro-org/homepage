@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.schapiro.org/sitemap.xml
+Sitemap: https://schapiro.org/sitemap.xml

@@ -1,6 +1,6 @@
 # schapiro.org homepage
 
-The Schapiro Center homepage at <https://www.schapiro.org/>: a small [Hugo](https://gohugo.io/)
+The Schapiro Center homepage at <https://schapiro.org/>: a small [Hugo](https://gohugo.io/)
 site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 
 ## Editing
@@ -36,7 +36,7 @@ production build; all other builds are `noindex`).
 
 Cloudflare Workers Builds runs `./build.sh` and deploys `public/` as Workers static assets.
 [`wrangler.jsonc`](wrangler.jsonc) is the source of truth for the deploy: Worker name, custom
-domains (`www.schapiro.org`, `schapiro.org`) and 404 handling. Only `main` gets an indexable
+domains (`schapiro.org`, `www.schapiro.org`) and 404 handling. Only `main` gets an indexable
 production build.
 
 ### Cloudflare dashboard settings
@@ -51,3 +51,6 @@ can't live in this repo:
 - **Production branch:** `main`, **Enable Preview builds:** on
 - **Build variable:** `HUGO_VERSION` = `0.169.0`. Cloudflare's build image installs this Hugo
   version; bump it here when you upgrade Hugo locally.
+- **Redirect Rule** (zone `schapiro.org` → Rules → Redirect Rules, template "Redirect from WWW to
+  root"): `www.schapiro.org/*` → `https://schapiro.org/${1}`, 301, preserve query string. The apex
+  is canonical.

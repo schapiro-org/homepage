@@ -28,4 +28,4 @@ Schlomo Schapiro
 ---
 
 Hier könnt Ihr Euch auch unsere anderen Webseiten anschauen:\
-[schapiro.org](https://www.schapiro.org/)
+[schapiro.org](/)

@@ -1,13 +1,13 @@
 {
-  // Cloudflare Workers static assets deploy for www.schapiro.org.
+  // Cloudflare Workers static assets deploy for schapiro.org.
   // This file is the source of truth for the deploy; the Cloudflare dashboard
   // only holds the Git connection and the build settings listed in README.md.
   "name": "schapiro-org-homepage",
   "compatibility_date": "2026-11-05",
 
   // The schapiro.org zone is on Cloudflare, so deploy provisions the DNS
-  // records and certificates. www is canonical (see <link rel="canonical">);
-  // the apex serves the same site.
+  // records and certificates. The apex is canonical; www 301-redirects to it
+  // via a zone Redirect Rule (see README.md).
   "routes": [
     { "pattern": "www.schapiro.org", "custom_domain": true },
     { "pattern": "schapiro.org", "custom_domain": true }

@@ -1,4 +1,4 @@
-# The link cards on www.schapiro.org, one list per section, rendered in this order.
+# The link cards on schapiro.org, one list per section, rendered in this order.
 # Each entry: name, url, image (file in assets/images/, about 233 px wide), description.
 # Personal and memorial sites are also listed in the WebSite structured data (hasPart).
 

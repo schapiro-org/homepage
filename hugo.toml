@@ -1,4 +1,4 @@
-baseURL = "https://www.schapiro.org/"
+baseURL = "https://schapiro.org/"
 title = "Schapiro Center"
 locale = "en-US"
 disableKinds = ["taxonomy", "term", "section", "rss", "404"]
