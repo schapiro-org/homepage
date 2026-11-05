@@ -22,6 +22,8 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
   from the logo and the portraits in the personal and memorial sections of `data/links.yaml`
   (one row up to 6, two rows beyond). Font: `assets/fonts/`.
 - **Styles:** `assets/css/style.css` (plain CSS with native nesting, system fonts; inlined into each page)
+- **Colors:** `[params.colors]` in `hugo.toml`, the only place colors are defined (used by the CSS
+  and the link-preview image)
 - **Images:** `assets/images/`. Hugo serves them content-hashed; card photos and the logo are
   resized and converted to WebP. All are cached for a year (`static/_headers`). `static/` holds only files that
   need a fixed name: favicons, `robots.txt`, `_redirects`, `_headers`.
@@ -55,3 +57,5 @@ can't live in this repo:
 - **Production branch:** `main`, **Enable Preview builds:** on
 - **Build variable:** `HUGO_VERSION` = `0.169.0`. Cloudflare's build image installs this Hugo
   version; bump it here when you upgrade Hugo locally.
+
+AI coding agents: see [`AGENTS.md`](AGENTS.md) for the rules that keep this site intact.

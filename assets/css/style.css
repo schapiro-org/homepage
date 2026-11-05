@@ -1,16 +1,10 @@
 /* Schapiro Center: plain modern CSS (native nesting), no preprocessor, system fonts only.
-   Hugo minifies it and inlines it into every page (see layouts/_partials/head.html). */
+   Hugo minifies it and inlines it into every page (see layouts/_partials/head.html).
+
+   Colors are NOT defined here: --primary, --accent, --link, --text, --text-light,
+   --background, --surface, --rule and --line come from [params.colors] in hugo.toml,
+   emitted by head.html. Use only those variables; never hard-code a color. */
 :root {
-  /* "Warm parchment": cream like the logo's scroll, navy like its lettering, amber accents */
-  --primary: #073763; /* logo blue */
-  --accent: #d97706; /* amber */
-  --link: #b45309;
-  --text: #3b2f2a;
-  --text-light: #7c6a5d;
-  --background: #fbf6ec;
-  --surface: #fffdf8;
-  --rule: #e9d8b4;
-  --line: #3b2f2a; /* card and photo outlines */
   --radius: 1rem;
   /* Platform fonts only, no download. Serif: a Palatino-like face on every platform. */
   --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "Noto Serif", Georgia, serif;

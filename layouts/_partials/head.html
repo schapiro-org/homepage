@@ -13,9 +13,12 @@
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}" />
 <meta name="application-name" content="{{ site.Params.siteName }}" />
-{{- /* ~1 KB of CSS: inlined, so rendering needs no extra request */}}
+{{- /* ~1 KB of CSS, inlined so rendering needs no extra request. The color palette comes
+       first, as CSS custom properties generated from [params.colors] in hugo.toml. */}}
+{{- $palette := "" }}
+{{- range $name, $value := site.Params.colors }}{{ $palette = printf "%s--%s:%s;" $palette $name $value }}{{ end }}
 {{- with resources.Get "css/style.css" | minify }}
-<style>{{ .Content | safeCSS }}</style>
+<style>{{ printf ":root{%s}%s" $palette .Content | safeCSS }}</style>
 {{- end }}
 
 <!-- Icons: Google Search needs a favicon of at least 48x48 px -->

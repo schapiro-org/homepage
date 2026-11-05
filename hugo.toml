@@ -9,6 +9,21 @@ disableKinds = ["taxonomy", "term", "section", "rss", "404"]
   ogImageAlt = "Schapiro Center: logo and portraits of the family members with a homepage"
   contactURL = "https://forms.gle/Ytoz65webQRWBigD6"
 
+# The site's color palette ("Warm parchment": cream like the logo's scroll, navy like its
+# lettering, amber accents). Single source of truth: layouts/_partials/head.html emits every
+# entry as a CSS custom property (primary -> --primary), and layouts/_partials/og-image.html
+# uses the same values for the link-preview image. Never hard-code a color anywhere else.
+[params.colors]
+  primary = "#073763"     # logo blue: headings, card names
+  accent = "#d97706"      # amber: bar under headings, card hover lip
+  link = "#b45309"        # link text, card hover border, hostname in the preview image
+  text = "#3b2f2a"        # body text
+  text-light = "#7c6a5d"  # card descriptions, footer
+  background = "#fbf6ec"  # page background (cream), preview image background
+  surface = "#fffdf8"     # card background
+  rule = "#e9d8b4"        # footer rule, solid lip under cards
+  line = "#3b2f2a"        # outlines of cards and photos
+
 
 # Hugo >= 0.16x blocks .html content files by default. content/impressum/index.html
 # is the HTML output of the privacy-notice generator, kept as HTML so updates are a

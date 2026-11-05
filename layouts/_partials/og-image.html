@@ -9,7 +9,9 @@
   Returns the image resource; call with partialCached "og-image.html" .
 */ -}}
 {{- $W := 1200 }}{{- $H := 630 }}{{- $margin := 60 }}
-{{- $bg := "#fbf6ec" }}{{- $navy := "#073763" }}{{- $amber := "#b45309" }}{{- $line := "#3b2f2a" }}
+{{- /* Same palette as the page: [params.colors] in hugo.toml */}}
+{{- $c := site.Params.colors }}
+{{- $bg := $c.background }}{{- $primary := $c.primary }}{{- $link := $c.link }}{{- $line := $c.line }}
 {{- $serif := resources.Get "fonts/Caladea-Bold.ttf" }}
 {{- $mask := resources.Get "images/og/frame-mask.png" }}
 
@@ -51,7 +53,7 @@
     {{- $framed := $photo | images.Filter (images.Padding 2 2 2 2 $line) (images.Mask $mask) }}
     {{- $first := index (split $p.link.name " ") 0 }}
     {{- $filters = $filters | append (images.Overlay $framed $x $y) }}
-    {{- $filters = $filters | append (images.Text $first (dict "font" $serif "size" $nameSize "color" $navy "x" (add $x (div $fw 2)) "y" (add $y $fh 8) "alignx" "center")) }}
+    {{- $filters = $filters | append (images.Text $first (dict "font" $serif "size" $nameSize "color" $primary "x" (add $x (div $fw 2)) "y" (add $y $fh 8) "alignx" "center")) }}
     {{- $x = add $x $fw $gap }}
   {{- end }}
   {{- $y = add $y $fh $nameH 12 }}
@@ -59,7 +61,7 @@
 
 {{- /* Hostname from baseURL */}}
 {{- $host := (urls.Parse site.BaseURL).Host }}
-{{- $filters = $filters | append (images.Text $host (dict "font" $serif "size" 32 "color" $amber "x" (div $W 2) "y" (sub $H 70) "alignx" "center")) }}
+{{- $filters = $filters | append (images.Text $host (dict "font" $serif "size" 32 "color" $link "x" (div $W 2) "y" (sub $H 70) "alignx" "center")) }}
 
 {{- $img := ($canvas | images.Filter $filters).Process "jpg q90" }}
 {{- return (resources.Copy "images/og-image.jpg" $img | fingerprint) }}
