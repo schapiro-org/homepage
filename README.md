@@ -18,7 +18,7 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/)); **robots.txt:** `static/robots.txt`
 - **Page `<head>`** (title, description, link previews, icons, structured data):
   `layouts/_partials/head.html`
-- **Styles:** `static/style.css`
+- **Styles:** `assets/style.css` (plain CSS with native nesting; Hugo minifies and fingerprints it)
 
 Templates: `layouts/baseof.html` wraps every page (head, logo, footer); `layouts/home.html` renders
 the home page with the link cards; `layouts/page.html` renders every other page from `content/`.

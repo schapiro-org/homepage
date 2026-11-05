@@ -1,0 +1,111 @@
+/* Schapiro Center: plain modern CSS (native nesting), no preprocessor.
+   Hugo minifies and fingerprints it (see layouts/_partials/head.html). */
+:root {
+  --primary: #073763; /* logo blue */
+  --link: #2c5aa0;
+  --text: #2c3e50;
+  --text-light: #6c757d;
+  --background: #f8fafc;
+  --surface: #fff;
+  --rule: #e2e8f0;
+  --line: #000; /* card and photo outlines, as on the old site */
+  --radius: 1rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin-inline: auto;
+  max-inline-size: 60rem;
+  padding: 2rem 1rem 3rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+}
+
+a {
+  color: var(--link);
+  &:hover { color: var(--primary); }
+}
+
+header img {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 30rem;
+  block-size: auto;
+  margin: 0 auto 1.5rem;
+}
+
+main {
+  max-inline-size: 50rem;
+  margin-inline: auto;
+
+  /* wide figures (Impressum) must not overflow on phones */
+  & img { max-inline-size: 100%; block-size: auto; }
+
+  /* 404 page illustration (content/404.md) */
+  & img[src$="groucho-marx-309396.svg"] { display: block; inline-size: 20rem; margin-inline: auto; }
+}
+
+h2 {
+  color: var(--primary);
+  text-align: center;
+  text-wrap: balance;
+  margin-block: 2.5rem 1rem;
+}
+
+/* Link cards (home page sections from data/links.yaml) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 5px 5px grey; /* the old site's card shadow */
+  color: inherit;
+  text-decoration: none;
+  transition: translate 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    color: inherit;
+    translate: 0 -4px;
+    box-shadow: 0 9px 9px grey;
+    border-color: var(--link);
+  }
+
+  & img {
+    flex-shrink: 0;
+    inline-size: 6rem;
+    block-size: auto;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) * 0.75);
+    background: var(--surface);
+
+    &.padded { padding: 0.4rem; }
+  }
+
+  & h3 { margin: 0; color: var(--primary); font-size: 1.2rem; }
+  & p { margin: 0.25rem 0 0; color: var(--text-light); }
+}
+
+footer {
+  max-inline-size: 30rem;
+  margin: 3rem auto 0;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--rule);
+  text-align: center;
+  color: var(--text-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; &:hover { translate: none; } }
+}

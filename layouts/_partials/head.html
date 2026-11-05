@@ -12,7 +12,9 @@
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}" />
 <meta name="application-name" content="{{ site.Params.siteName }}" />
-<link rel="stylesheet" href="/style.css" />
+{{- with resources.Get "style.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{- end }}
 
 <!-- Icons: Google Search needs a favicon of at least 48x48 px -->
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
