@@ -18,9 +18,9 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/)); **robots.txt:** `static/robots.txt`
 - **Page `<head>`** (title, description, link previews, icons, structured data):
   `layouts/_partials/head.html`
-- **Styles:** `assets/css/style.css` (plain CSS with native nesting)
-- **Images:** `assets/images/`. Everything in `assets/` is served content-hashed
-  (`name.<sha256>.ext`) and cached for a year (`static/_headers`). `static/` holds only files that
+- **Styles:** `assets/css/style.css` (plain CSS with native nesting, system fonts; inlined into each page)
+- **Images:** `assets/images/`. Hugo serves them content-hashed; card photos and the logo are
+  resized and converted to WebP. All are cached for a year (`static/_headers`). `static/` holds only files that
   need a fixed name: favicons, `robots.txt`, `_redirects`, `_headers`.
 
 Templates: `layouts/baseof.html` wraps every page (head, logo, footer); `layouts/home.html` renders

@@ -5,8 +5,9 @@
   </head>
   <body>
     <header>
-      {{- with resources.Get "images/Schapiro-Center-Logo.png" | fingerprint }}
-      <a href="/"><img src="{{ .RelPermalink }}" alt="Schapiro Center" width="{{ .Width }}" height="{{ .Height }}" /></a>
+      {{- /* The logo is the largest element on the page: WebP, loaded first */}}
+      {{- with (resources.Get "images/Schapiro-Center-Logo.png").Resize "592x webp q85" }}
+      <a href="/"><img src="{{ .RelPermalink }}" alt="Schapiro Center" width="{{ .Width }}" height="{{ .Height }}" fetchpriority="high" /></a>
       {{- end }}
     </header>
     <main>

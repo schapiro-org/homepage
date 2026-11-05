@@ -6,8 +6,9 @@
   {{ range .links }}
   {{- $link := . }}
   <a class="card" href="{{ .url }}" target="_blank" rel="noopener">
-    {{- with resources.Get (printf "images/%s" .image) | fingerprint }}
-    <img {{ if $link.padded }}class="padded" {{ end }}src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" loading="lazy" />
+    {{- /* 192 px = 2x the 6rem display width, WebP */}}
+    {{- with (resources.Get (printf "images/%s" .image)).Resize "192x webp q80" }}
+    <img {{ if $link.padded }}class="padded" {{ end }}src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" loading="lazy" decoding="async" />
     {{- end }}
     <div>
       <h3>{{ .name }}</h3>

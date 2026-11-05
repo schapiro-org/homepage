@@ -13,8 +13,9 @@
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}" />
 <meta name="application-name" content="{{ site.Params.siteName }}" />
-{{- with resources.Get "css/style.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{- /* ~1 KB of CSS: inlined, so rendering needs no extra request */}}
+{{- with resources.Get "css/style.css" | minify }}
+<style>{{ .Content | safeCSS }}</style>
 {{- end }}
 
 <!-- Icons: Google Search needs a favicon of at least 48x48 px -->
