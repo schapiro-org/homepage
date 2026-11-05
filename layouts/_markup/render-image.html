@@ -1,0 +1,5 @@
+{{- /* Markdown images: files from assets/ are served content-hashed. */ -}}
+{{- $src := .Destination -}}
+{{- with resources.Get .Destination -}}{{ $src = (. | fingerprint).RelPermalink }}{{- end -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} />
+{{- /* chomp trailing newline */ -}}

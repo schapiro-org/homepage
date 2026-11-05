@@ -6,7 +6,7 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 ## Editing
 
 - **Link cards:** [`data/links.yaml`](data/links.yaml) holds the three sections (Personal
-  Homepages, Memorial Homepages, See Also). Card images live in `static/`, about 233 px wide.
+  Homepages, Memorial Homepages, See Also). Card images live in `assets/images/`, about 233 px wide.
   Entries in sections marked `structured: true` are also listed in the home page's `WebSite`
   structured data (`hasPart`).
 - **Intro text:** `content/_index.md`
@@ -18,7 +18,10 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/)); **robots.txt:** `static/robots.txt`
 - **Page `<head>`** (title, description, link previews, icons, structured data):
   `layouts/_partials/head.html`
-- **Styles:** `assets/style.css` (plain CSS with native nesting; Hugo minifies and fingerprints it)
+- **Styles:** `assets/css/style.css` (plain CSS with native nesting)
+- **Images:** `assets/images/`. Everything in `assets/` is served content-hashed
+  (`name.<sha256>.ext`) and cached for a year (`static/_headers`). `static/` holds only files that
+  need a fixed name: favicons, `robots.txt`, `_redirects`, `_headers`.
 
 Templates: `layouts/baseof.html` wraps every page (head, logo, footer); `layouts/home.html` renders
 the home page with the link cards; `layouts/page.html` renders every other page from `content/`.

@@ -45,7 +45,7 @@ main {
   & img { max-inline-size: 100%; block-size: auto; }
 
   /* 404 page illustration (content/404.md) */
-  & img[src$="groucho-marx-309396.svg"] { display: block; inline-size: 20rem; margin-inline: auto; }
+  & img[src*="/groucho-marx-309396."] { display: block; inline-size: 20rem; margin-inline: auto; }
 }
 
 h2 {

@@ -1,6 +1,7 @@
 {{- $title := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
 {{- $description := .Params.description | default site.Params.description }}
-{{- $image := site.Params.ogImage | absURL }}
+{{- $og := resources.Get site.Params.ogImage | fingerprint }}
+{{- $image := $og.Permalink }}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ $title }}</title>
@@ -12,7 +13,7 @@
 {{- end }}
 <link rel="canonical" href="{{ .Permalink }}" />
 <meta name="application-name" content="{{ site.Params.siteName }}" />
-{{- with resources.Get "style.css" | minify | fingerprint }}
+{{- with resources.Get "css/style.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
 {{- end }}
 
@@ -33,8 +34,8 @@
 <meta property="og:locale" content="{{ cond (eq .Params.lang "de") "de_DE" "en_US" }}" />
 <meta property="og:image" content="{{ $image }}" />
 <meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="{{ $og.Width }}" />
+<meta property="og:image:height" content="{{ $og.Height }}" />
 <meta property="og:image:alt" content="{{ site.Params.ogImageAlt }}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ $title }}" />

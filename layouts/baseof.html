@@ -5,7 +5,9 @@
   </head>
   <body>
     <header>
-      <a href="/"><img src="/Schapiro-Center-Logo.png" alt="Schapiro Center" width="592" height="231" /></a>
+      {{- with resources.Get "images/Schapiro-Center-Logo.png" | fingerprint }}
+      <a href="/"><img src="{{ .RelPermalink }}" alt="Schapiro Center" width="{{ .Width }}" height="{{ .Height }}" /></a>
+      {{- end }}
     </header>
     <main>
       {{ block "main" . }}{{ end }}

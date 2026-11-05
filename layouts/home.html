@@ -4,8 +4,11 @@
 <h2>{{ .section }}</h2>
 <section class="cards">
   {{ range .links }}
+  {{- $link := . }}
   <a class="card" href="{{ .url }}" target="_blank" rel="noopener">
-    <img {{ if .padded }}class="padded" {{ end }}src="/{{ .image }}" alt="" loading="lazy" />
+    {{- with resources.Get (printf "images/%s" .image) | fingerprint }}
+    <img {{ if $link.padded }}class="padded" {{ end }}src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" loading="lazy" />
+    {{- end }}
     <div>
       <h3>{{ .name }}</h3>
       <p>{{ .description }}</p>
