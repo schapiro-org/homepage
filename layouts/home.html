@@ -4,7 +4,7 @@
 <h2>{{ .section }}</h2>
 <section class="cards">
   {{ range .links }}
-  <a class="card" href="{{ .url }}">
+  <a class="card" href="{{ .url }}" target="_blank" rel="noopener">
     <img {{ if .padded }}class="padded" {{ end }}src="/{{ .image }}" alt="" loading="lazy" />
     <div>
       <h3>{{ .name }}</h3>

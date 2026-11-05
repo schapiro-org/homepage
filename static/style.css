@@ -8,6 +8,7 @@
     --background: #f8fafc;
     --surface: #ffffff;
     --border: #e2e8f0;
+    --line: #2c3e50; /* card and photo outlines, as on the old site */
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -72,7 +73,7 @@ h2 {
     align-items: center;
     padding: 1rem;
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-radius: 1rem;
     box-shadow: var(--shadow);
     color: inherit;
@@ -91,7 +92,7 @@ h2 {
     flex-shrink: 0;
     width: 6rem;
     height: auto;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-radius: 0.75rem;
     background: var(--surface);
 }
