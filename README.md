@@ -17,8 +17,11 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 - **Upload page** for event photos: `content/upload.md`, served at `/upload/`, noindex
 - **Redirects:** `static/_redirects` ([format](https://developers.cloudflare.com/workers/static-assets/redirects/)); **robots.txt:** `static/robots.txt`
 - **Page `<head>`** (title, description, link previews, icons, structured data):
-  `layouts/partials/head.html`
+  `layouts/_partials/head.html`
 - **Styles:** `static/style.css`
+
+Templates: `layouts/baseof.html` wraps every page (head, logo, footer); `layouts/home.html` renders
+the home page with the link cards; `layouts/page.html` renders every other page from `content/`.
 
 ## Local development
 
