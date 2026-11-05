@@ -21,31 +21,26 @@ site deployed to Cloudflare Workers static assets by Cloudflare Workers Builds.
 
 ## Local development
 
-Install Hugo (`brew install hugo`), then:
-
-```bash
-./run.sh
-```
-
-opens a live-reloading server on <http://localhost:1313>. `./build.sh` builds into `public/`
-(`./build.sh -p` for a production build; all other builds are `noindex`).
+Install Hugo (`brew install hugo`), then run `hugo server` for a live-reloading preview on
+<http://localhost:1313>. `./build.sh` builds into `public/` (`./build.sh -p` for an indexable
+production build; all other builds are `noindex`).
 
 ## Deployment
 
+Cloudflare Workers Builds runs `./build.sh` and deploys `public/` as Workers static assets.
 [`wrangler.jsonc`](wrangler.jsonc) is the source of truth for the deploy: Worker name, custom
-domains (`www.schapiro.org`, `schapiro.org`) and static asset handling.
-[`bin/ci-build.sh`](bin/ci-build.sh) installs the latest Hugo release (checksum-verified) and
-runs `./build.sh`; only `main` gets a production build.
-
-Hugo is deliberately not pinned. To pin it, set the build variable `HUGO_VERSION` (e.g. `0.169.0`).
+domains (`www.schapiro.org`, `schapiro.org`) and 404 handling. Only `main` gets an indexable
+production build.
 
 ### Cloudflare dashboard settings
 
-The Workers project `schapiro-org-homepage` is connected to this repository. Its build
-settings (Settings → Build) can't live in this repo:
+The Workers project `schapiro-org-homepage` is connected to this repository. These settings
+can't live in this repo:
 
-- **Build command:** `./bin/ci-build.sh`
+- **Build command:** `./build.sh`
 - **Deploy command:** `npx wrangler deploy`
 - **Non-production branch deploy command:** `npx wrangler versions upload`
   (uploads a preview version and posts its URL on the PR; it never touches production)
 - **Production branch:** `main`, **builds for non-production branches:** on
+- **Build variable:** `HUGO_VERSION` = `0.169.0`. Cloudflare's build image installs this Hugo
+  version; bump it here when you upgrade Hugo locally.
